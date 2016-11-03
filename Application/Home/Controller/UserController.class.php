@@ -90,13 +90,29 @@ class UserController extends HomeController {
 		}
 	}
 
+	/*
+	 * wechat oauth
+	 */
+	public function wechatLogin(){
+		//微信授权登陆拿到用户信息
+		$wechat_oauth = new wechatOauthController();
+		$wechat_oauth->getUserMoreInfo();
+
+
+		//判断该用户是否注册，如果没有注册则模拟注册并登陆，如果已注册则模拟登陆
+
+
+
+
+	}
+
 	/* 退出登录 */
 	public function logout(){
 		if(is_login()){
 			D('Member')->logout();
-			$this->success('退出成功！', U('User/login'));
+			$this->success('退出成功！', U('Index/index'));
 		} else {
-			$this->redirect('User/login');
+			$this->redirect('Index/index');
 		}
 	}
 

@@ -33,9 +33,13 @@ class IndexController extends HomeController {
         $user = session('user_auth');
         $this->assign(array(
             'user_auth' => serialize($user),
-            'user_name' => $user['username']
+            'user_name' => $user['username'],
+            'is_login' => is_login()
         ));
-        $this->display();
+        //$this->display();
+
+        $a = 'http://mika85489.vicp.cc' .U('Index/index');
+        dump($a);
     }
 
 }
