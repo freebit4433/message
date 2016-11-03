@@ -95,7 +95,7 @@ class UserController extends HomeController {
 	 */
 	public function wechatLogin(){
 		//微信授权登陆拿到用户信息
-		$wechat_oauth = new wechatOauthController();
+		$wechat_oauth = new WeixinOauthController();
 		$wechat_oauth->getUserMoreInfo();
 
 

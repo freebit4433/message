@@ -36,10 +36,7 @@ class IndexController extends HomeController {
             'user_name' => $user['username'],
             'is_login' => is_login()
         ));
-        //$this->display();
-
-        $a = 'http://mika85489.vicp.cc' .U('Index/index');
-        dump($a);
+        $this->display();
     }
 
 }
