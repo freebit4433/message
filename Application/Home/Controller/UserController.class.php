@@ -96,7 +96,7 @@ class UserController extends HomeController {
 	public function wechatLogin(){
 		//微信授权登陆拿到用户信息
 		$wechat_oauth = new WeixinOauthController();
-		$wechat_oauth->getUserMoreInfo();
+		$user_info = $wechat_oauth->getUserMoreInfo();
 
 
 		//判断该用户是否注册，如果没有注册则模拟注册并登陆，如果已注册则模拟登陆

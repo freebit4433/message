@@ -55,11 +55,12 @@ class WeixinOauthController extends Controller{
     }
 
     public function oauthMoreCallback($code,$state=''){
-        //code 2 access_token
         if(isset($code)){
-            $data = $this->_getAccessToken($code);
+            //code 2 access_token
+            $access_token_data = $this->_getAccessToken($code);
             //access_token & openid 2 userinfo
-            dump($data);
+            $user_info = $this->_getUserInfoByOauth($access_token_data);
+
 
 
         }else{
@@ -103,6 +104,17 @@ class WeixinOauthController extends Controller{
         return json_decode($re);
     }
 
+    private function _getUserInfoByOauth($data){
+        $api = 'https://api.weixin.qq.com/sns/userinfo';
+        $query_data = array(
+            'access_token' => $data['access_token'],
+            'openid' => $data['openid'],
+            'lang' => 'zh_CN'
+        );
+        $api .= '?' . http_build_query($query_data);
+        $user_info = file_get_contents($api);
+        return json_decode($user_info);
+    }
 
 
 
